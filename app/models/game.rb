@@ -1,8 +1,9 @@
 class Game
-  attr_accessor :running
+  attr_accessor :running :current_world
 
   def initialize(running)
     @running = running
+    @current_world = nil
   end
 
   def make_npc
@@ -23,7 +24,7 @@ class Game
     puts "Enter [name][race][age]"
     input = gets.chomp
     split_in = input.split
-    
+
   end
 
   def create_npc_random
@@ -50,6 +51,21 @@ class Game
       end
     else
       puts "#{cmd} is not a valid command"
+    end
+  end
+
+  def world_select
+    puts "select a world"
+    puts "[0] New World"
+    Worlds.all.each do |w|
+      puts "[#{w.id}] w.name"
+    end
+    choice = gets.chomp
+    case choice
+    when '0'
+      # Makes New World
+    else
+      @current_world = Worlds.select {|w| w.id == choice.to_i}
     end
   end
 
