@@ -1,5 +1,5 @@
 class Game
-  attr_accessor :running :current_world
+  attr_accessor :running, :current_world
 
   def initialize(running)
     @running = running
